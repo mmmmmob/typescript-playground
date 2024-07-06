@@ -29,9 +29,29 @@ const logNumber: (i: Number) => void = (i: Number) => {
   console.log(i);
 };
 
-// When to use type annotations?
+// When to use explicit type annotations?
 // 1) Function that returns the 'any' type
 const json = '{"x": 10, "y": 20}';
 const coordinates: { x: Number; y: Number } = JSON.parse(json);
 console.log(coordinates); // { x: 10, y: 20 }
 console.log(coordinates.x); // 10
+
+// 2) Delayed Initialization
+let words = ["red", "green", "blue"];
+let foundWord: Boolean;
+
+for (let i = 0; i < words.length; i++) {
+  if (words[i] === "green") {
+    foundWord = true;
+  }
+}
+
+// 3) Variables that cannot inferred correctly
+let numbers = [-10, -1, 12];
+let numberAboveZero: Boolean | Number = false;
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > 0) {
+    numberAboveZero = numbers[i];
+  }
+}
