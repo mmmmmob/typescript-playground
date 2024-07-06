@@ -23,3 +23,15 @@ let point: { x: Number; y: Number } = {
   x: 10,
   y: 20,
 };
+
+// Function (Nasty Version)
+const logNumber: (i: Number) => void = (i: Number) => {
+  console.log(i);
+};
+
+// When to use type annotations?
+// 1) Function that returns the 'any' type
+const json = '{"x": 10, "y": 20}';
+const coordinates: { x: Number; y: Number } = JSON.parse(json);
+console.log(coordinates); // { x: 10, y: 20 }
+console.log(coordinates.x); // 10
