@@ -23,8 +23,20 @@ const oldCivic = {
   },
 };
 
+const myDrink = {
+  color: "brown",
+  isCarbonated: true,
+  sugarAmount: 40,
+  summary(): string {
+    return `My drink has ${this.sugarAmount} grams of sugar.`;
+  },
+};
+
+// this is a generic function that can be reusable
 const printSummary = (item: Reportable): void => {
   console.log(item.summary());
 };
 
+// because oldCivic and drink object satisfied the Reportable interface, we can use printSummary function with it
 printSummary(oldCivic);
+printSummary(myDrink);
