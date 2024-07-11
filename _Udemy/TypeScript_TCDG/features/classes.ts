@@ -1,5 +1,16 @@
 // create a blueprint
 class Vehicle {
+  /*
+  color: string;
+
+  constructor(color: string) {
+    this.color = color;
+  }
+  */
+
+  // init value with /constructor/ syntax :: this shortened line equivalent to above full constructor ⬆️
+  constructor(public color: string) {}
+
   // modifier: public = as a default access control -> can access this method from anywhere at anytime
   public drive(): void {
     console.log("STARTED THE ENGINE!");
@@ -18,6 +29,12 @@ class Car extends Vehicle {
     console.log("CAR ENGINE STARTED!");
   }
 
+  // inherited class with their own constructor must include super() to indicate its parent constructor
+  // can be indicate with second argument
+  constructor(public wheels: number, color: string) {
+    super(color);
+  }
+
   // modifier: private = can be accessed within its class only
   private accelerate(): void {
     this.honk();
@@ -32,9 +49,13 @@ class Car extends Vehicle {
 }
 
 // create new instance from the blueprint with /new/ syntax
-const vehicle = new Vehicle();
+// must contain parameter required by constructor in its class
+const vehicle = new Vehicle("orange");
 vehicle.drive();
 vehicle.honk(); // <- this resulted in error
+console.log(vehicle.color); // 'orange'
 
-const car = new Car();
+const car = new Car(4, "red");
 car.startDrivingProcess();
+console.log(car.color); // 'red'
+console.log(car.wheels); // 4
