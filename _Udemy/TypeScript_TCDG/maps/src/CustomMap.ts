@@ -1,7 +1,8 @@
 /// <reference types="@types/google.maps" />
 
-// instruction for another class to comply with the interface in order to use with addMarker()
+// instruction for another class to comply with the interface in order to use with addMarker() and display content inside marker with markerContent()
 interface Mappable {
+  markerContent(): string;
   location: {
     lat: number;
     lng: number;
@@ -27,12 +28,19 @@ export class CustomMap {
   }
 
   addMarker(toMarker: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: toMarker.location.lat,
         lng: toMarker.location.lng,
       },
+    });
+    // add a marker at clicked time
+    marker.addListener("click", () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: toMarker.markerContent(),
+      });
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
