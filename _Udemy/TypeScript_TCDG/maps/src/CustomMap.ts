@@ -1,6 +1,15 @@
 /// <reference types="@types/google.maps" />
 import { Company } from "./Company";
 import { User } from "./User";
+
+// instruction for another class to comply with the interface in order to use with addMarker()
+interface Mappable {
+  location: {
+    lat: number;
+    lng: number;
+  };
+}
+
 export class CustomMap {
   // to limit access of Google Maps method with /private/ syntax
   private googleMap: google.maps.Map;
@@ -19,12 +28,12 @@ export class CustomMap {
     );
   }
 
-  addMarker(person: User | Company): void {
+  addMarker(toMarker: Mappable): void {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: person.location.lat,
-        lng: person.location.lng,
+        lat: toMarker.location.lat,
+        lng: toMarker.location.lng,
       },
     });
   }
