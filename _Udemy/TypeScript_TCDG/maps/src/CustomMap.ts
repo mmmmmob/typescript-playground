@@ -1,6 +1,4 @@
 /// <reference types="@types/google.maps" />
-import { Company } from "./Company";
-import { User } from "./User";
 
 // instruction for another class to comply with the interface in order to use with addMarker()
 interface Mappable {
