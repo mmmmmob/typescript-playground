@@ -1,12 +1,14 @@
 /// <reference types="@types/google.maps" />
 
 // instruction for another class to comply with the interface in order to use with addMarker() and display content inside marker with markerContent()
-interface Mappable {
+// export this interface to be implementing in another class
+export interface Mappable {
   markerContent(): string;
   location: {
     lat: number;
     lng: number;
   };
+  color: string;
 }
 
 export class CustomMap {
