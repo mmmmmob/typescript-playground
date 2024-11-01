@@ -1,14 +1,20 @@
 class Sorter {
-  constructor(public collection: number[]) {}
+  constructor(public collection: number[] | string) {}
 
   sort(): void {
     const { length } = this.collection;
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - i - 1; j++) {
-        if (this.collection[j] > this.collection[j + 1]) {
-          const leftHand = this.collection[j];
-          this.collection[j] = this.collection[j + 1];
-          this.collection[j + 1] = leftHand;
+        // type guard with instanceof (object)
+        if (this.collection instanceof Array) {
+          if (this.collection[j] > this.collection[j + 1]) {
+            const leftHand = this.collection[j];
+            this.collection[j] = this.collection[j + 1];
+            this.collection[j + 1] = leftHand;
+          }
+        }
+        // type guard with typeof (primitive type)
+        if (typeof this.collection === "string") {
         }
       }
     }
@@ -16,5 +22,8 @@ class Sorter {
 }
 
 const sorter = new Sorter([-10, 3, -4, 0]);
+const sorterString = new Sorter("hello");
 sorter.sort();
+sorterString.sort();
 console.log(sorter.collection);
+console.log(sorterString.collection);
