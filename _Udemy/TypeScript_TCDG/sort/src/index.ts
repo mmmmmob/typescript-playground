@@ -3,8 +3,15 @@ import { LinkedList } from "./LinkedList";
 import { NumberCollection } from "./NumbersCollection";
 import { Sorter } from "./Sorter";
 
-// const numberCollection = new NumberCollection([-10, 3, -4, 0]);
-// const characterCollection = new CharacterCollection("cdAGhf");
+const numberCollection = new NumberCollection([-10, 3, -4, 0]);
+
+// .sort() can be directly calling from NumberCollection class
+numberCollection.sort();
+console.log(numberCollection.data);
+
+const characterCollection = new CharacterCollection("cdAGhf");
+characterCollection.sort();
+console.log(characterCollection.data);
 
 // const sorterNum = new Sorter(numberCollection);
 // sorterNum.sort();
@@ -20,6 +27,9 @@ linkedList.add(-10);
 linkedList.add(-3);
 linkedList.add(5);
 
-const sorter = new Sorter(linkedList);
-sorter.sort();
+linkedList.sort();
 linkedList.print();
+
+// const sorter = new Sorter(linkedList);
+// sorter.sort();
+// linkedList.print();

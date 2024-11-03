@@ -1,5 +1,9 @@
-export class NumberCollection {
-  constructor(public data: number[]) {}
+import { Sorter } from "./Sorter";
+
+export class NumberCollection extends Sorter {
+  constructor(public data: number[]) {
+    super();
+  }
 
   // use get keyword == don't have to call it as a method
   get length(): number {
