@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CsvFileReader = void 0;
 const fs_1 = __importDefault(require("fs"));
-// ? this reader is now a generic reader without any references of MatchReader and can be reuse with any .csv
+// ? create abstract class with generic type to be reusable with different type of return type
 class CsvFileReader {
     constructor(filename) {
         this.filename = filename;
@@ -17,7 +17,9 @@ class CsvFileReader {
             .split("\n")
             .map((row) => {
             return row.split(",");
-        });
+        })
+            // convert a row as a set of managable data types
+            .map(this.mapRow);
     }
 }
 exports.CsvFileReader = CsvFileReader;
