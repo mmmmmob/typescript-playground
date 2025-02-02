@@ -1,5 +1,5 @@
-import { CsvFileReader } from "./CsvFileReader";
-import { MatchReader } from "./MatchReader";
+import { CsvFileReader } from "./composition/CsvFileReader";
+import { MatchReader } from "./composition/MatchReader";
 import { MatchResult } from "./MatchResult";
 
 const csvReader = new CsvFileReader("football.csv");
