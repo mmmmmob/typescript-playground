@@ -1,5 +1,5 @@
-import { MatchResult } from "./MatchResult";
-import { dateStringToDate } from "./utils";
+import { MatchResult } from "../MatchResult";
+import { dateStringToDate } from "../utils";
 
 // ? DataReader to be using in MatchReader always has to have these structure (which CsvReader has right now)
 interface DataReader {
@@ -12,11 +12,11 @@ type MatchData = [Date, string, string, number, number, MatchResult, string];
 
 export class MatchReader {
   matches: MatchData[] = [];
-  // ? load DataReader when launch a new instance
+  // ? pass in a DataReader instance when launch a new instance
   constructor(public reader: DataReader) {}
   load(): void {
     this.reader.read();
-    // ? convert a row as a set of managable data types and store it in a match property when load() is called
+    // ? convert a row as a set of manageable data types and store it in a match property when load() is called
     this.matches = this.reader.data.map((row: string[]): MatchData => {
       return [
         dateStringToDate(row[0]),
