@@ -1,8 +1,5 @@
-import { WinAnalysis } from "./analyzers/WinAnalysis";
 import { CsvFileReader } from "./composition/CsvFileReader";
 import { MatchReader } from "./composition/MatchReader";
-import { ConsoleReport } from "./reportTargets/ConsoleReport";
-import { HtmlReport } from "./reportTargets/HtmlReport";
 import { Summary } from "./Summary";
 
 const csvReader = new CsvFileReader("football.csv");

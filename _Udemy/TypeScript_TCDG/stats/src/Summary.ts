@@ -11,6 +11,7 @@ export interface OutputTarget {
 }
 
 export class Summary {
+  // ? use static method to return value w/o creating instances
   static winAnalysisWithHtmlReport(team: string, data: MatchData[]) {
     const summary = new Summary(
       new WinAnalysis(team),
