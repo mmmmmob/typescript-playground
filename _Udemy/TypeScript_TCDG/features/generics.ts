@@ -21,4 +21,4 @@ class ArrayOfAnything<T> {
 }
 
 const example = new ArrayOfAnything<string>(["a", "b", "c"]);
-console.log(example.get(3)); // 'c'
+console.log(example.get(2)); // 'c'
